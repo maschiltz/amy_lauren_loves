@@ -1,0 +1,15 @@
+<%= form_for @blog_entry, url: {action: "create"} do |f| %>
+  <%= f.label(:posted, "Post Date: ") %>
+  <%= f.text_field(:posted) %>
+  <br />
+  <%= f.label(:title, "Title: ") %>
+  <%= f.text_field(:title) %>
+  <br />
+  <%= f.label(:image, "Cover Image: ") %>
+  <%= f.file_field 'image' %>
+  <br />
+  <%= f.label(:text, "Body: ") %>
+  <%= f.cktext_area(:text) %>
+  <br />
+  <%= f.submit("Create") %>
+<% end %>

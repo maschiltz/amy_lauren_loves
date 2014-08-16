@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Amy Lauren Loves</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="left-sidebar">
+        <div class="logo-container">
+          <image id="logo" src="/images/aLlogo3.png" />
+        </div><br clear="all" />
+        <div class="sidebar-links">
+        </div>
+      </div>
+      <div class="non-left-sidebar">
+       <div style="position: relative;">
+        <div class="navbar-container">
+          <ul class="my-navbar">
+            <li><%= link_to "HOME", root_path %></li>
+            <li><span id="blog-link">BLOG</span></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => 'class_here' %></li>
+              <li><%= link_to "CREATE BLOG", new_blog_entry_path %></li>
+            <% else %>
+              <li><%= link_to "LOGIN", new_user_session_path, :class => 'class_here' %></li>
+            <% end %>
+          </ul>
+        </div>
+          <img id="logorightside" src="/images/logorightside.png" />
+       </div>
+       <div class="main-container">
+          <%= yield %>  
+        </div>
+        <div id="grey" class="hidden"></div>
+        <div id="popup"><div id="popup-container" class="hidden"></div></div>
+      </div>
+    </div>
+  </div>
+
+<% if notice %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+</body>
+</html>

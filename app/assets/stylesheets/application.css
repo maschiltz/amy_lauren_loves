@@ -1,0 +1,109 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@media screen and (min-width: 959px) {
+  .container {
+    margin: 0 auto;
+    max-width: 1160px;
+    min-width: 1160px;
+    width: 90%;
+  }
+}
+
+body
+{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #aaa;
+}
+
+.left-sidebar
+{
+  position: relative;
+  float: left;
+  width: 96px;
+}
+
+.navbar-container
+{
+  left: 5px;
+  position: relative;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  width: 100%;
+  margin-right: 0px;
+  float: left;
+  font-size: 15px;
+}
+
+.logo-container
+{
+  float: left;
+  position: relative;
+  left: -28px;
+}
+
+.logo-container img
+{
+  width: 120px;
+}
+
+.header-container
+{
+  height: 175px;
+}
+.my-navbar
+{
+  list-style-type: none;
+  margin: 5px;
+  padding-left: 0px;
+}
+
+.my-navbar li
+{
+  display: inline;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.my-navbar li span
+{
+  cursor: pointer;
+}
+
+.non-left-sidebar
+{
+  width: 998px;
+  float: left;
+}
+
+#logorightside
+{
+  position: absolute;
+  left: 720px;
+}
+
+a:-webkit-any-link
+{
+  text-decoration: none;
+  color: #aaa;
+}
