@@ -15,3 +15,19 @@
 //= require turbolinks
 //= require_tree .
 //= require ckeditor/init
+
+$(document).ready(function() {
+  $('img.small-home-image').mouseover(function() {
+    $(this).animate({opacity: .25}, 500);
+  });
+  $('img.small-home-image').mouseout(function() {
+    $(this).animate({opacity: 1}, 500);
+  });
+  
+  $('div.small-home-image').mouseover(function() {
+    $(this).animate({opacity: .5}, 500);
+  });
+  $('div.small-home-image').mouseout(function() {
+    $(this).animate({opacity: 0}, 500);
+  });
+});

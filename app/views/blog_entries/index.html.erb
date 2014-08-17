@@ -1,0 +1,14 @@
+<% @blog_entries.each do |blog| %>
+
+<div class="small-image blog-holder">
+  <span class="home-blog-title">
+    <h2><%= blog.title %></h2>
+  </span>
+  <% if blog.image %>
+    <img class="small-home-image" style="opacity: 1;" src="/blog_images/<%= blog.image %>"></div>
+  <% else %>
+    <div class="small-home-image" style="background-color: #BFE0E2; width: 100%; height: 100%; opacity: .0;"></div>
+  <% end %>
+</div>
+
+<% end %>

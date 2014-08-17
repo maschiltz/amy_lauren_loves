@@ -107,3 +107,60 @@ a:-webkit-any-link
   text-decoration: none;
   color: #aaa;
 }
+
+.small-image
+{
+  border: 1px solid #aaa;
+  position: relative;
+  width: 242px;
+  height: 242px;
+  margin: 7px;
+}
+
+.blog-holder
+{
+  margin: 5px;
+  text-align: center;
+  display: table;
+  cursor: pointer;
+  float: left;
+}
+
+.small-home-image
+{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 240px;
+  height: 240px;
+}
+
+.home-blog-title
+{
+  display: table-cell;
+  vertical-align: middle;
+  padding: 20px;
+  color: #aaa;
+}
+
+.main-container
+{
+  position: relative;
+  width: 1025px;
+  float: left;
+  color: black;
+  font-size: 16px;
+}
+
+h2
+{
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Roboto';
+}
+
+h3
+{
+  font-weight: 300;
+  font-family: 'Roboto';
+}

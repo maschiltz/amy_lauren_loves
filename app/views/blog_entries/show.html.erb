@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+<% end %>
+
+<div class="single_blog_holder" style="border: 1px solid #aaa">
+  <h3><%= @blog_entry.title %></h3>
+  <span style="font-size: 12px;">Posted On: <%= @blog_entry.posted %></span>
+  <br />
+  <%= @blog_entry.text.html_safe %>
+  <br />
+</div>
