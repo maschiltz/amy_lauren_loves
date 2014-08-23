@@ -42,3 +42,4 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'ckeditor'
 gem 'byebug'
+gem 'paperclip'

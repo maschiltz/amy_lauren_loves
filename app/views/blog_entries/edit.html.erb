@@ -1,4 +1,4 @@
-<%= form_for @blog_entry, url: {action: "create"}, html: {:multipart => true} do |f| %>
+<%= form_for @blog_entry, url: blog_entry_path(@blog_entry), method: :patch, html: {:multipart => true} do |f| %>
   <%= f.label(:posted, "Post Date: ") %>
   <%= f.date_field(:posted) %>
   <br />
@@ -11,5 +11,5 @@
   <%= f.label(:text, "Body: ") %>
   <%= f.cktext_area(:text) %>
   <br />
-  <%= f.submit("Create") %>
+  <%= f.submit("Update") %>
 <% end %>

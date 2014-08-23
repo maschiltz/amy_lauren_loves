@@ -14,11 +14,11 @@
  *= require_self
  */
 
-@media screen and (min-width: 959px) {
+@media screen and (min-width: 1200px) {
   .container {
     margin: 0 auto;
-    max-width: 1160px;
-    min-width: 1160px;
+    max-width: 1200px;
+    min-width: 1200px;
     width: 90%;
   }
 }
@@ -112,8 +112,8 @@ a:-webkit-any-link
 {
   border: 1px solid #aaa;
   position: relative;
-  width: 242px;
-  height: 242px;
+  width: 240px;
+  height: 240px;
   margin: 7px;
 }
 

@@ -23,10 +23,13 @@
         <div class="navbar-container">
           <ul class="my-navbar">
             <li><%= link_to "HOME", root_path %></li>
-            <li><span id="blog-link">BLOG</span></li>
+            <li><%= link_to "BLOGS", blog_entries_path %></li>
+            <li><%= link_to "LINKS", image_links_path %></li>
             <% if user_signed_in? %>
               <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => 'class_here' %></li>
               <li><%= link_to "CREATE BLOG", new_blog_entry_path %></li>
+              <li><%= link_to "CREATE LINK", new_image_link_path %></li>
+              <li><%= link_to "LIST LINKS", image_links_path %></li>
             <% else %>
               <li><%= link_to "LOGIN", new_user_session_path, :class => 'class_here' %></li>
             <% end %>

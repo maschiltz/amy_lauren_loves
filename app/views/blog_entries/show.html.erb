@@ -1,4 +1,6 @@
 <% if user_signed_in? %>
+<input type="button" id="edit_blog_entry" data-blogentryid="<%= @blog_entry.id %>" value="Edit" />
+<input type="button" id="delete_blog_entry" data-blogentryid="<%= @blog_entry.id %>" value="Delete" />
 <% end %>
 
 <div class="single_blog_holder" style="border: 1px solid #aaa">

@@ -16,18 +16,48 @@
 //= require_tree .
 //= require ckeditor/init
 
-$(document).ready(function() {
+var ready;
+ready = function() {
   $('img.small-home-image').mouseover(function() {
     $(this).animate({opacity: .25}, 500);
   });
   $('img.small-home-image').mouseout(function() {
     $(this).animate({opacity: 1}, 500);
   });
-  
+
   $('div.small-home-image').mouseover(function() {
     $(this).animate({opacity: .5}, 500);
   });
   $('div.small-home-image').mouseout(function() {
     $(this).animate({opacity: 0}, 500);
   });
-});
+
+  $('.blog-holder').click(function() {
+    if ($(this).data('id')) {
+      window.location = "/blog_entries/"+$(this).data('id');
+    }
+  });
+
+  $('.love-link').click(function() {
+    if ($(this).data('link')) {
+      window.open($(this).data('link'));
+    }
+  });
+
+  $('#delete_blog_entry').click(function() {
+    if (confirm('Are you SURE you want to delete this blog?')) {
+      $.ajax({
+        url: "/blog_entries/"+$(this).data('blogentryid'),
+        method: "DELETE"
+      }).done(function() {
+        window.location = '/';
+      });
+    }
+  });
+  $('#edit_blog_entry').click(function() {
+    window.location = '/blog_entries/'+$(this).data('blogentryid')+'/edit'
+  });
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

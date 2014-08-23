@@ -1,0 +1,12 @@
+<%= form_for @image_link, url: image_link_path(@image_link), method: :patch, html: {:multipart => true} do |f| %>
+  <%= f.label(:title, "Title: ") %>
+  <%= f.text_field(:title) %>
+  <br />
+  <%= f.label(:link, "Link: ") %>
+  <%= f.text_field(:link) %>
+  <br />
+  <%= f.label(:image, "Cover Image: ") %>
+  <%= f.file_field :image %>
+  <br />
+  <%= f.submit("Update") %>
+<% end %>

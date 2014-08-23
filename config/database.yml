@@ -8,7 +8,7 @@ default: &default
   adapter: mysql2
   database: amy_lauren_loves
   username: root
-  password: Never-Guess9250
+  password: 
   host: localhost
 
 development:

@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   get 'site/index'
 
   resources :blog_entries
+  resources :image_links
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-root 'blog_entries#index'
+  
+  root 'site#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
