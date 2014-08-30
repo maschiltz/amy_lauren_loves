@@ -1,15 +1,20 @@
 <%= form_for @blog_entry, url: {action: "create"}, html: {:multipart => true} do |f| %>
+ <div class="editable_blog_text_fields">
   <%= f.label(:posted, "Post Date: ") %>
   <%= f.date_field(:posted) %>
   <br />
+  <%= f.label(:featured, "Featured: ") %>
+  <%= f.text_field(:featured) %>
+  <br />
   <%= f.label(:title, "Title: ") %>
   <%= f.text_field(:title) %>
+ </div>
   <br />
   <%= f.label(:image, "Cover Image: ") %>
   <%= f.file_field :image %>
   <br />
   <%= f.label(:text, "Body: ") %>
-  <%= f.cktext_area(:text) %>
+  <%= f.cktext_area(:text, :height => '500px') %>
   <br />
   <%= f.submit("Create") %>
 <% end %>

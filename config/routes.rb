@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'site/index'
 
+  get 'image_links/list' => 'image_links#list'
   resources :blog_entries
   resources :image_links
 
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   
   root 'site#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

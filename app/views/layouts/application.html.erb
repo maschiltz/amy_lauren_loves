@@ -19,17 +19,17 @@
         </div>
       </div>
       <div class="non-left-sidebar">
-       <div style="position: relative;">
+       <div style="position: fixed; z-index: 1000; background-color:white; width:1008px; top: 0px;">
         <div class="navbar-container">
           <ul class="my-navbar">
             <li><%= link_to "HOME", root_path %></li>
             <li><%= link_to "BLOGS", blog_entries_path %></li>
-            <li><%= link_to "LINKS", image_links_path %></li>
+            <li><%= link_to "GALLERIES", image_links_list_path %></li>
             <% if user_signed_in? %>
               <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => 'class_here' %></li>
               <li><%= link_to "CREATE BLOG", new_blog_entry_path %></li>
               <li><%= link_to "CREATE LINK", new_image_link_path %></li>
-              <li><%= link_to "LIST LINKS", image_links_path %></li>
+              <li><%= link_to "EDIT LINKS", image_links_path %></li>
             <% else %>
               <li><%= link_to "LOGIN", new_user_session_path, :class => 'class_here' %></li>
             <% end %>

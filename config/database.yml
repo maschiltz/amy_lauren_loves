@@ -8,7 +8,7 @@ default: &default
   adapter: mysql2
   database: amy_lauren_loves
   username: root
-  password: 
+  password: Never-Guess9250
   host: localhost
 
 development:
@@ -24,4 +24,3 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3

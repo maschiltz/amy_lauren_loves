@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818012834) do
+ActiveRecord::Schema.define(version: 20140826022250) do
 
   create_table "blog_entries", force: true do |t|
     t.string   "title"
     t.text     "text"
     t.datetime "posted"
+    t.string   "image"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140818012834) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "featured"
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140818012834) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "posted"
   end
 
   create_table "users", force: true do |t|

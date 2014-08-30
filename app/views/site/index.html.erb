@@ -1,26 +1,14 @@
-<% @blog_entries.each do |blog| %>
-
-<div class="small-image blog-holder" data-id="<%= blog.id %>">
-  <span class="home-blog-title">
-    <h2><%= blog.title %></h2>
-  </span>
-  <% if blog.image_file_name %>
-    <%= image_tag blog.image.url(:medium), class: 'small-home-image' %>
+<% @list.each do |item| %>
+  <% if item.has_attribute?('link') %>
+<div data-link="<%= item.link %>" class="small-image love-link blog-holder">
   <% else %>
-    <div class="small-home-image" style="background-color: #BFE0E2; width: 100%; height: 100%; opacity: .0;"></div>
+<div class="small-image blog-holder" data-id="<%= item.id %>">
   <% end %>
-</div>
-
-<% end %>
-
-<% @image_links.each do |link| %>
-<div data-link="<%= link.link %>" class="small-image love-link blog-holder">
   <span class="home-blog-title">
-    <h2><%= link.title %></h2>
+    <h2><%= item.title %></h2>
   </span>
-
-  <% if link.image_file_name %>
-    <%= image_tag link.image.url(:medium), class: 'small-home-image' %>
+  <% if item.image_file_name %>
+    <%= image_tag item.image.url(:medium), class: 'small-home-image' %>
   <% else %>
     <div class="small-home-image" style="background-color: #BFE0E2; width: 100%; height: 100%; opacity: .0;"></div>
   <% end %>

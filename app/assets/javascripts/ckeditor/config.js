@@ -1,13 +1,14 @@
 if (typeof(CKEDITOR) != 'undefined') {
 CKEDITOR.editorConfig = function(config) {
   config.language = 'en';
-//  config.filebrowserBrowseUrl = "/ckeditor/pictures";
-//  config.filebrowserFlashBrowseUrl = "/ckeditor/pictures";
-//  config.filebrowserFlashUploadUrl = "/ckeditor/pictures";
-//  config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
-//  config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
-//  config.filebrowserImageUploadUrl = "/ckeditor/pictures";
-//  config.filebrowserUploadUrl = "/ckeditor/pictures";
+  config.height = "600",
+  config.filebrowserBrowseUrl = "/ckeditor/pictures";
+  config.filebrowserFlashBrowseUrl = "/ckeditor/pictures";
+  config.filebrowserFlashUploadUrl = "/ckeditor/pictures";
+  config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
+  config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
+  config.filebrowserImageUploadUrl = "/ckeditor/pictures";
+  config.filebrowserUploadUrl = "/ckeditor/pictures";
   config.toolbar_Pure = [
     '/', {
       name: 'basicstyles',

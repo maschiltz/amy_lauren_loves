@@ -1,4 +1,7 @@
 <%= form_for @image_link, url: {action: "create"}, html: {:multipart => true} do |f| %>
+  <%= f.label(:posted, "Post Date: ") %>
+  <%= f.date_field(:posted) %>
+  <br />
   <%= f.label(:title, "Title: ") %>
   <%= f.text_field(:title) %>
   <br />

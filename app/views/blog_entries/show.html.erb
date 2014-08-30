@@ -1,12 +1,24 @@
 <% if user_signed_in? %>
 <input type="button" id="edit_blog_entry" data-blogentryid="<%= @blog_entry.id %>" value="Edit" />
 <input type="button" id="delete_blog_entry" data-blogentryid="<%= @blog_entry.id %>" value="Delete" />
+<br />
 <% end %>
 
-<div class="single_blog_holder" style="border: 1px solid #aaa">
+<div class="single_blog_holder">
   <h3><%= @blog_entry.title %></h3>
-  <span style="font-size: 12px;">Posted On: <%= @blog_entry.posted %></span>
+  <span style="font-size: 12px;"><%= @blog_entry.posted.strftime("%B %d, %Y") %></span>
   <br />
   <%= @blog_entry.text.html_safe %>
   <br />
+</div>
+
+<div class="featured">
+<span class="title">READ THIS, BETCHES</span><br />
+<% @features.each do |feature| %>
+  <div class="featured_holder">
+  <%= image_tag feature.image.url(:medium), class: "featured_image", data: {id: feature.id} %>
+  <br />
+  <span class="blog_title"><%= feature.title %></span>
+  </div>
+<% end %>
 </div>

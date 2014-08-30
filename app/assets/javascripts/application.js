@@ -57,6 +57,11 @@ ready = function() {
   $('#edit_blog_entry').click(function() {
     window.location = '/blog_entries/'+$(this).data('blogentryid')+'/edit'
   });
+
+  $('.featured_image').unbind('click');
+  $('.featured_image').click(function() {
+    window.location = '/blog_entries/'+$(this).data('id')
+  })
 }
 
 $(document).ready(ready);

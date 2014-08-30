@@ -20,10 +20,12 @@ class BlogEntriesController < ApplicationController
     if current_user
       @blog_entry = BlogEntry.find(params[:id])
 
-      if params[:blog_entry][:posted]
-        if params[:blog_entry][:posted] =~ /\A(\d{2})\/(\d{2})\/(\d{4})\z/
-          params[:blog_entry][:posted] = "#{$3}-#{$1}-#{$2}"
-        end
+      if params[:blog_entry][:posted] == ''
+        params[:blog_entry][:posted] = Time.now
+      end      
+        
+      if params[:blog_entry][:posted] =~ /\A(\d{2})\/(\d{2})\/(\d{4})\z/
+        params[:blog_entry][:posted] = "#{$3}-#{$1}-#{$2}"
       end
 
       if @blog_entry.update(blog_entry_params)
@@ -38,13 +40,16 @@ class BlogEntriesController < ApplicationController
 
   def create
     if current_user
-      @blog_entry = BlogEntry.new(blog_entry_params)
-
-      if params[:blog_entry][:posted]
-        if params[:blog_entry][:posted] =~ /\A(\d{2})\/(\d{2})\/(\d{4})\z/
-          params[:blog_entry][:posted] = "#{$3}-#{$1}-#{$2}"
-        end
+      
+      if params[:blog_entry][:posted] == ''
+        params[:blog_entry][:posted] = Time.now
+      end      
+        
+      if params[:blog_entry][:posted] =~ /\A(\d{2})\/(\d{2})\/(\d{4})\z/
+        params[:blog_entry][:posted] = "#{$3}-#{$1}-#{$2}"
       end
+
+      @blog_entry = BlogEntry.new(blog_entry_params)
 
       @blog_entry.save
       redirect_to @blog_entry
@@ -55,6 +60,7 @@ class BlogEntriesController < ApplicationController
 
   def show
     @blog_entry = BlogEntry.find(params[:id])
+    @features = BlogEntry.where("featured > 0").order('featured ASC')
   end
 
   def destroy
@@ -69,10 +75,12 @@ class BlogEntriesController < ApplicationController
 
   def index
     @blog_entries = BlogEntry.all
+    @list = @blog_entries.sort_by { |item| item[:posted] }.reverse
+    render "site/index"
   end
 
   private
     def blog_entry_params
-      params.require(:blog_entry).permit(:title, :text, :posted, :image)
+      params.require(:blog_entry).permit(:title, :text, :posted, :image, :featured)
     end
 end
