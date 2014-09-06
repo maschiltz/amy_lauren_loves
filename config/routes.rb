@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'image_links/list' => 'image_links#list'
   resources :blog_entries
   resources :image_links
+  resources :comments
+
+  get 'comments/:blog_entry_id', to: 'comments#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -63,4 +66,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
 end

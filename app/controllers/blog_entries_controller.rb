@@ -61,6 +61,7 @@ class BlogEntriesController < ApplicationController
   def show
     @blog_entry = BlogEntry.find(params[:id])
     @features = BlogEntry.where("featured > 0").order('featured ASC')
+    @comments = Comment.where("blog_entry_id = ?", params[:id])
   end
 
   def destroy
@@ -76,11 +77,11 @@ class BlogEntriesController < ApplicationController
   def index
     @blog_entries = BlogEntry.all
     @list = @blog_entries.sort_by { |item| item[:posted] }.reverse
-    render "site/index"
+    @features = BlogEntry.where("featured > 0").order('featured ASC')
   end
 
   private
     def blog_entry_params
-      params.require(:blog_entry).permit(:title, :text, :posted, :image, :featured)
+      params.require(:blog_entry).permit(:title, :text, :posted, :image, :featured, :show_on_home)
     end
 end

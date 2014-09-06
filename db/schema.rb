@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826022250) do
+ActiveRecord::Schema.define(version: 20140904013449) do
 
   create_table "blog_entries", force: true do |t|
     t.string   "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140826022250) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "featured"
+    t.integer  "show_on_home"
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -43,6 +44,17 @@ ActiveRecord::Schema.define(version: 20140826022250) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.text     "text"
+    t.integer  "blog_entry_id"
+    t.integer  "parent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+  end
+
+  add_index "comments", ["blog_entry_id"], name: "index_comments_on_blog_entry_id", using: :btree
 
   create_table "image_links", force: true do |t|
     t.string   "title"

@@ -62,6 +62,23 @@ ready = function() {
   $('.featured_image').click(function() {
     window.location = '/blog_entries/'+$(this).data('id')
   })
+
+  $('.show_comments').unbind('click');
+  $('.show_comments').click(function() {
+    var blog_id = $(this).data('blogid');
+    $.ajax({
+      url: "/comments/"+blog_id,
+      method: 'GET'
+    }).done(function(res) {
+      console.log(blog_id);
+      $('.comments[data-blogid='+blog_id+']').html(res);
+    });
+  });
+
+  $('form.new_comment').unbind('submit');
+  $('form.new_comment').submit(function(e) {
+    new Event(e).stop();
+  });
 }
 
 $(document).ready(ready);

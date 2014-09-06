@@ -1,3 +1,5 @@
+<% title @blog_entry.title %>
+
 <% if user_signed_in? %>
 <input type="button" id="edit_blog_entry" data-blogentryid="<%= @blog_entry.id %>" value="Edit" />
 <input type="button" id="delete_blog_entry" data-blogentryid="<%= @blog_entry.id %>" value="Delete" />
@@ -5,20 +7,22 @@
 <% end %>
 
 <div class="single_blog_holder">
-  <h3><%= @blog_entry.title %></h3>
   <span style="font-size: 12px;"><%= @blog_entry.posted.strftime("%B %d, %Y") %></span>
   <br />
+  <h3><%= @blog_entry.title %></h3>
   <%= @blog_entry.text.html_safe %>
   <br />
+  <%= render template: "comments/show" %>
 </div>
 
 <div class="featured">
-<span class="title">READ THIS, BETCHES</span><br />
+<span class="title">RECENTLY...</span><br />
 <% @features.each do |feature| %>
   <div class="featured_holder">
-  <%= image_tag feature.image.url(:medium), class: "featured_image", data: {id: feature.id} %>
+  <%= image_tag feature.image.url(:medium), class: "featured_image", data: {id: feature.id, :'pin-no-hover' => 'true'} %>
   <br />
   <span class="blog_title"><%= feature.title %></span>
   </div>
 <% end %>
 </div>
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script>

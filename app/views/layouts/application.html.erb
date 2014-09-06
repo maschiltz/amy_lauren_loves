@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Amy Lauren Loves</title>
+  <title><%= yield(:title).empty? ? 'Amy Lauren Loves' : yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+  <meta name="p:domain_verify" content="2b067d24b04f1bf8eaab2a6adb3b586a"/>
+  <meta name="google-site-verification" content="QDxFPc6m8m5XVYOVN7SsFuMD8lQoTFEGILoSXhEj2j0" />
 </head>
 <body>
 
@@ -13,13 +15,13 @@
     <div class="row">
       <div class="left-sidebar">
         <div class="logo-container">
-          <image id="logo" src="/images/aLlogo3.png" />
+          <img id="logo" src="/images/aLlogo3.png" data-pin-no-hover="true" />
         </div><br clear="all" />
         <div class="sidebar-links">
         </div>
       </div>
       <div class="non-left-sidebar">
-       <div style="position: fixed; z-index: 1000; background-color:white; width:1008px; top: 0px;">
+       <div style="position: fixed; z-index: 9000000; background-color:white; width:1008px; top: 0px;">
         <div class="navbar-container">
           <ul class="my-navbar">
             <li><%= link_to "HOME", root_path %></li>
@@ -35,7 +37,7 @@
             <% end %>
           </ul>
         </div>
-          <img id="logorightside" src="/images/logorightside.png" />
+          <img id="logorightside" src="/images/logorightside.png" data-pin-no-hover="true" />
        </div>
        <div class="main-container">
           <%= yield %>  

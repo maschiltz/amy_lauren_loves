@@ -1,6 +1,6 @@
 class SiteController < ApplicationController
   def index
-    @blog_entries = BlogEntry.all
+    @blog_entries = BlogEntry.where(show_on_home: 1)
     @image_links = ImageLink.all
     @list = [@blog_entries, @image_links].flatten
     @list = @list.sort_by { |item| item[:posted] }.reverse

@@ -1,7 +1,11 @@
 if (typeof(CKEDITOR) != 'undefined') {
 CKEDITOR.editorConfig = function(config) {
   config.language = 'en';
-  config.height = "600",
+  config.height = "600";
+  config.width = "720";
+  config.fontSize_defaultLabel = '14px'
+  config.allowedContent = true;
+  config.disableNativeSpellChecker = false;
   config.filebrowserBrowseUrl = "/ckeditor/pictures";
   config.filebrowserFlashBrowseUrl = "/ckeditor/pictures";
   config.filebrowserFlashUploadUrl = "/ckeditor/pictures";
@@ -12,7 +16,7 @@ CKEDITOR.editorConfig = function(config) {
   config.toolbar_Pure = [
     '/', {
       name: 'basicstyles',
-      items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
+      items: ['Source', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
     }, {
       name: 'paragraph',
       items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
