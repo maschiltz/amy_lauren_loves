@@ -123,6 +123,8 @@ function init_comment_delete() {
 function init_comment_form() {
   $('form.new_comment .ajax_submit').unbind('click');
   $('form.new_comment .ajax_submit').click(function() {
+    var button = $(this);
+    button.prop('disabled',true);
     var urlstring = $('form.new_comment').serialize();
     $.ajax({
       url: "/comments/",
@@ -135,6 +137,7 @@ function init_comment_form() {
       init_comment_delete();
       init_comment_reply();
       init_comment_cancel();
+      button.prop('disabled',false);
     });
   });
 }

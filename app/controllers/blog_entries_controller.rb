@@ -97,6 +97,7 @@ class BlogEntriesController < ApplicationController
         comment_obj['depth'] = depth
         comment_obj['text'] = comment.text
         comment_obj['id'] = comment.id
+        comment_obj['email'] = comment.email
         retval.push(comment_obj)
         children = comments_for_level(blog, comment.id, depth+1)
         children.each do |child|

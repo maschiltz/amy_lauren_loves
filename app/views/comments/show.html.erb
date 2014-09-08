@@ -3,6 +3,7 @@
 <ul>
 <% @comments.each do |comment| %>
   <li class="comment_holder" data-depth="<%= comment['depth'] %>">
+    <%= comment['email'] %> says:<br />
     <%= comment['text'] %>   
     <br />
     <% if user_signed_in? %>
