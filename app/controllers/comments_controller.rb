@@ -9,11 +9,9 @@ class CommentsController < ApplicationController
 
   def create
 
-puts params.inspect()
     if params[:comment][:parent].nil? || params[:comment][:parent] == ''
       params[:comment][:parent] = 0
     end
-puts params[:comment][:parent]
     @comment = Comment.new(comment_params)
     @comment.save
  
