@@ -75,10 +75,75 @@ ready = function() {
     });
   });
 
-  $('form.new_comment').unbind('submit');
-  $('form.new_comment').submit(function(e) {
-    new Event(e).stop();
+  init_comment_delete();
+  init_comment_form();
+  indent_comments();
+  init_comment_reply();
+  init_comment_cancel();
+}
+
+function init_comment_cancel() {
+  $('.comments .cancel').unbind('click');
+  $('.comments .cancel').click(function() {
+    var form = $('form.new_comment');
+    form.appendTo($('div.comments'));
+    $('.comments .cancel').addClass('hidden');
+    $('#comment_parent').val(0);
   });
+}
+
+function init_comment_reply() {
+  $('.comments .reply').unbind('click');
+  $('.comments .reply').click(function() {
+    var form = $('form.new_comment');
+    form.appendTo($(this).closest('li'));
+    $(this).siblings('.cancel').removeClass('hidden');
+    $('#comment_parent').val($(this).data('commentid'));
+  });
+}
+
+function init_comment_delete() {
+  $('.comments .delete').unbind('click');
+  $('.comments .delete').click(function() {
+    comment_id = $(this).data('commentid');
+    $.ajax({
+      url: "/comments/"+comment_id,
+      method: "DELETE"
+    }).done(function(res) {
+      $('div.comments').replaceWith(res);
+      indent_comments();
+      init_comment_form();
+      init_comment_delete();
+      init_comment_reply();
+      init_comment_cancel();
+    });
+  });
+}
+
+function init_comment_form() {
+  $('form.new_comment .ajax_submit').unbind('click');
+  $('form.new_comment .ajax_submit').click(function() {
+    var urlstring = $('form.new_comment').serialize();
+    $.ajax({
+      url: "/comments/",
+      method: 'POST',
+      data: urlstring
+    }).done(function(res) {
+      $('div.comments').replaceWith(res);
+      indent_comments();
+      init_comment_form();
+      init_comment_delete();
+      init_comment_reply();
+      init_comment_cancel();
+    });
+  });
+}
+
+function indent_comments()
+{
+  $('.comment_holder').each(function() {
+    $(this).css('margin-left', $(this).data('depth') * 50);
+  })
 }
 
 $(document).ready(ready);

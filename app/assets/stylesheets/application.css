@@ -249,3 +249,32 @@ table p
   margin-top: 2px;
   margin-bottom: 2px;
 }
+
+li.comment_holder
+{
+  border-top: 1px black dotted;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.hidden
+{
+  display: none;
+}
+
+#comment_text
+{
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+}
+
+.new_comment input[type=text],
+{
+  width: 200px;
+}
+
+.new_comment input
+{
+  margin: 10px;
+}

@@ -1,8 +1,25 @@
+<div class="comments">
+<ul>
+<% @comments.each do |comment| %>
+  <li class="comment_holder" data-depth="<%= comment['depth'] %>">
+    <%= comment['text'] %>   
+    <br />
+    <% if user_signed_in? %>
+      <input type="button" value="Delete" class="delete" data-commentid="<%= comment['id'] %>" />
+    <% end %>
+    <input type="button" value="Reply" class="reply" data-commentid="<%= comment['id'] %>" />
+    <input type="button" value="Cancel" class="cancel hidden" />
+  </li>
+<% end %>
+</ul>
+
 <%= form_for Comment.new do |f| %>
-  <%= f.label(:email, "Email: ") %>
+  <%= f.hidden_field(:blog_entry_id, :value => blog_entry_id) %>
+  <%= f.hidden_field(:parent) %>
   <%= f.text_field(:email) %>
+  <%= f.label(:email, "Email") %>
   <br />
   <%= f.text_area(:text) %>
-  <br />
-  <%= f.submit("Create") %>
+  <input type="button" class="ajax_submit" value="Submit" />
 <% end %>
+</div>

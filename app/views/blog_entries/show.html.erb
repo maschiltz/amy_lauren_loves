@@ -12,7 +12,7 @@
   <h3><%= @blog_entry.title %></h3>
   <%= @blog_entry.text.html_safe %>
   <br />
-  <%= render template: "comments/show" %>
+  <%= render template: "comments/show", locals: {blog_entry_id: @blog_entry.id} %>
 </div>
 
 <div class="featured">

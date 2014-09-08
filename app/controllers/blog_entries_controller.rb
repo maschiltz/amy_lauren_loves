@@ -61,7 +61,11 @@ class BlogEntriesController < ApplicationController
   def show
     @blog_entry = BlogEntry.find(params[:id])
     @features = BlogEntry.where("featured > 0").order('featured ASC')
-    @comments = Comment.where("blog_entry_id = ?", params[:id])
+#    @comments = Comment.where("blog_entry_id = ?", params[:id])
+
+    @comments = Array.new
+    @comments = comments_for_level(params[:id], 0, 0)
+    puts @comments.inspect()
   end
 
   def destroy
@@ -84,4 +88,23 @@ class BlogEntriesController < ApplicationController
     def blog_entry_params
       params.require(:blog_entry).permit(:title, :text, :posted, :image, :featured, :show_on_home)
     end
+
+    def comments_for_level(blog, level, depth)
+      comments = Comment.where("blog_entry_id = ? AND parent = ?", blog, level).order(:created_at)
+      retval = Array.new
+      comments.each do |comment|
+        comment_obj = Hash.new
+        comment_obj['depth'] = depth
+        comment_obj['text'] = comment.text
+        comment_obj['id'] = comment.id
+        retval.push(comment_obj)
+        children = comments_for_level(blog, comment.id, depth+1)
+        children.each do |child|
+          retval.push(child)
+        end
+      end
+      return retval
+    end
+
+
 end
