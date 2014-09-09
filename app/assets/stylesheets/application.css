@@ -278,3 +278,9 @@ li.comment_holder
 {
   margin: 10px;
 }
+
+.pin-holder
+{
+  position: absolute;
+  margin: 10px;
+}

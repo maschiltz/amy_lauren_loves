@@ -3,7 +3,7 @@
 <div class="single_blog_holder dotted_border">
   <span style="font-size: 12px;"><%= blog.posted.strftime("%B %d, %Y") %></span>
   <br />
-  <h3><a href="/blog_entries/<%= blog.id %>"><%= blog.title %></a></h3>
+  <h3><a class="blog_title" href="/blog_entries/<%= blog.id %>"><%= blog.title %></a></h3>
   <%= blog.text.html_safe %>
  <br />
 </div>
@@ -21,4 +21,3 @@
   </div>
 <% end %>
 </div>
-<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script>
