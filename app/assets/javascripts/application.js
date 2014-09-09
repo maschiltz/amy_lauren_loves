@@ -80,6 +80,10 @@ ready = function() {
   indent_comments();
   init_comment_reply();
   init_comment_cancel();
+
+  if (window.location.pathname == '/blog_entries') {
+    my_hover_pins();
+  }
 }
 
 function init_comment_cancel() {
@@ -156,7 +160,7 @@ function my_hover_pins() {
       var url = encodeURIComponent(window.location.origin + image.closest('.single_blog_holder').find('a.blog_title').attr('href'));
       var img_src = encodeURIComponent(window.location.origin + image.attr('src'));
       var title = encodeURIComponent(image.closest('.single_blog_holder').find('a.blog_title').html());
-      image.before('<div class="pin-holder hidden"><a href="//www.pinterest.com/pin/create/button/?url='+url+'&media='+img_src+'&description='+title+' data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a></div>');
+      image.before('<div class="pin-holder hidden"><a href="//www.pinterest.com/pin/create/button/?url='+url+'&media='+img_src+'&description='+title+'" data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a></div>');
     }
     image.mouseover(function() {
       $(this).prev().removeClass('hidden');
