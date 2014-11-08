@@ -2,10 +2,10 @@
   <% if item.has_attribute?('link') %>
 <div data-link="<%= item.link %>" class="small-image love-link blog-holder">
   <% else %>
-<div class="small-image blog-holder" data-id="<%= item.id %>">
+<div class="small-image blog-holder" data-id="<%= item.id %>" data-url="/blog_entries/<%= item.to_param %>">
   <% end %>
   <span class="home-blog-title">
-    <h2><%= item.title %></h2>
+    <h2><a href="/blog_entries/<%= item.id %>"><%= item.title %></a></h2>
   </span>
   <% if item.image_file_name %>
     <%= image_tag item.image.url(:medium), class: 'small-home-image' %>

@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require ckeditor/init
+//= require_tree .
 
 var ready;
 ready = function() {
@@ -33,7 +33,10 @@ ready = function() {
   });
 
   $('.blog-holder').click(function() {
-    if ($(this).data('id')) {
+    if ($(this).data('url')) {
+      window.location = $(this).data('url');
+    }
+    else if ($(this).data('id')) {
       window.location = "/blog_entries/"+$(this).data('id');
     }
   });
@@ -60,7 +63,12 @@ ready = function() {
 
   $('.featured_image').unbind('click');
   $('.featured_image').click(function() {
-    window.location = '/blog_entries/'+$(this).data('id')
+    if ($(this).data('url')) {
+      window.location = $(this).data('url');
+    }
+    else if ($(this).data('id')) {
+      window.location = "/blog_entries/"+$(this).data('id');
+    }
   })
 
   $('.show_comments').unbind('click');

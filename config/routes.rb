@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :blog_entries
   resources :image_links
   resources :comments
+  resources :tags
+  resources :contacts
 
   get 'comments/:blog_entry_id', to: 'comments#show'
 

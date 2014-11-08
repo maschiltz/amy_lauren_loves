@@ -1,5 +1,5 @@
 <div class="comments">
-<h3>Comments</h3>
+<div class="page_heading">Comments</div>
 <ul>
 <% @comments.each do |comment| %>
   <li class="comment_holder" data-depth="<%= comment['depth'] %>">
@@ -18,11 +18,8 @@
 <%= form_for Comment.new do |f| %>
   <%= f.hidden_field(:blog_entry_id, :value => blog_entry_id) %>
   <%= f.hidden_field(:parent) %>
-  <%= f.text_field(:email) %>
-  <%= f.label(:email, "Name") %>
-  <br />
-  <%= f.text_area(:text) %>
-  <br />
-  <input type="button" class="ajax_submit" value="Submit" />
+  <div class="form_field"><input type="text" placeholder="NAME" name="comment[email]" id="comment[email]" /></div>
+  <div class="form_textarea"><textarea placeholder="COMMENT" name="comment[text]" id="comment[text]" /></textarea></div><br clear="all" />
+  <input type="button" class="ajax_submit comment_submit" value="Submit" />
 <% end %>
 </div>

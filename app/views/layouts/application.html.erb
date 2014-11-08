@@ -5,10 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Allura" rel="stylesheet" type="text/css" />
   <%= favicon_link_tag '/favicon.ico' %>  
   <%= csrf_meta_tags %>
   <meta name="p:domain_verify" content="2b067d24b04f1bf8eaab2a6adb3b586a"/>
   <meta name="google-site-verification" content="QDxFPc6m8m5XVYOVN7SsFuMD8lQoTFEGILoSXhEj2j0" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.5" />
 </head>
 <body>
 
@@ -19,41 +21,50 @@
           <img id="logo" src="/images/aLlogo3.png" data-pin-no-hover="true" />
         </div><br clear="all" />
         <div class="sidebar-links">
+          <ul class="my-navbar">
+            <%= show_tags_on_side() %>
+            <% if user_signed_in? %>
+              <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => 'class_here' %></li><br />
+              <li><%= link_to "CREATE BLOG", new_blog_entry_path %></li><br />
+              <li><%= link_to "CREATE LINK", new_image_link_path %></li><br />
+              <li><%= link_to "EDIT LINKS", image_links_path %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
       <div class="non-left-sidebar">
-       <div style="position: fixed; z-index: 9000000; background-color:white; width:1008px; top: 0px;">
-        <div class="navbar-container">
+       <div style="z-index: 9000000; background-color:white; width:1022px; top: 0px;">
+         <img class="facebook_icon" src="/images/facebook_icon.png" onclick="window.open('http://www.facebook.com/amy.schiltz')" />
+         <div class="navbar-container">
           <ul class="my-navbar">
             <li><%= link_to "HOME", root_path %></li>
-            <li><%= link_to "BLOGS", blog_entries_path %></li>
-            <li><%= link_to "GALLERIES", image_links_list_path %></li>
-            <% if user_signed_in? %>
-              <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => 'class_here' %></li>
-              <li><%= link_to "CREATE BLOG", new_blog_entry_path %></li>
-              <li><%= link_to "CREATE LINK", new_image_link_path %></li>
-              <li><%= link_to "EDIT LINKS", image_links_path %></li>
-            <% else %>
-              <li><%= link_to "LOGIN", new_user_session_path, :class => 'class_here' %></li>
-            <% end %>
+            <li><%= link_to "BLOG", blog_entries_path %></li>
+            <li><%= link_to "CONTACT", new_contact_path %></li>
+            <li><a href="/blog_entries/53-wedding-photography-pricing">PRICING</a></li>
           </ul>
         </div>
           <img id="logorightside" src="/images/logorightside.png" data-pin-no-hover="true" />
        </div>
        <div class="main-container">
           <%= yield %>  
-        </div>
-        <div id="grey" class="hidden"></div>
-        <div id="popup"><div id="popup-container" class="hidden"></div></div>
-      </div>
-    </div>
-  </div>
+       </div>
+       <br clear="all" />
+       <div class="footer">
+         <% if !user_signed_in? %>
+           ©2014&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "CLIENT GALLERIES", image_links_list_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "LOGIN", new_user_session_path %>
+         <% end %>
+       </div>
+       <div id="grey" class="hidden"></div>
+       <div id="popup"><div id="popup-container" class="hidden"></div></div>
+     </div>
+   </div>
+ </div>
 
 <% if notice %>
-  <p class="notice"><%= notice %></p>
+  <p class="notice hidden"><%= notice %></p>
 <% end %>
 <% if alert %>
-  <p class="alert"><%= alert %></p>
+  <p class="alert hidden"><%= alert %></p>
 <% end %>
 
 </body>

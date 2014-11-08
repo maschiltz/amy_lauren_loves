@@ -8,6 +8,14 @@
   <br />
   <%= f.label(:title, "Title: ") %>
   <%= f.text_field(:title) %>
+  <br />
+  <%= f.label(:tags, "Tags: ") %>
+  <br />
+  <% Tag.all.each do |tag| %>
+    &nbsp;&nbsp;&nbsp;&nbsp;<%= check_box_tag 'blog_entry[tag_ids][]', tag.id %>
+    <%= tag.name %>
+    <br />
+  <% end %>
  </div>
   <br />
   <%= f.label(:show_on_home, "Show On Home? ") %>

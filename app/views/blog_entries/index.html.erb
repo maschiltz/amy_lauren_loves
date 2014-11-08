@@ -10,14 +10,3 @@
 <br />
 
 <% end %>
-
-<div class="featured">
-<span class="title">RECENTLY...</span><br />
-<% @features.each do |feature| %>
-  <div class="featured_holder">
-  <%= image_tag feature.image.url(:medium), class: "featured_image", data: {id: feature.id, :'pin-no-hover' => 'true'} %>
-  <br />
-  <span class="blog_title"><%= feature.title %></span>
-  </div>
-<% end %>
-</div>

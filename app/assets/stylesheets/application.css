@@ -14,14 +14,12 @@
  *= require_self
  */
 
-@media screen and (min-width: 1200px) {
   .container {
     margin: 0 auto;
     max-width: 1200px;
     min-width: 1200px;
     width: 90%;
   }
-}
 
 body
 {
@@ -32,11 +30,9 @@ body
 
 .left-sidebar
 {
-  position: fixed;
   float: left;
   width: 96px;
   top: 10px;
-  margin-left: 30px;
 }
 
 .navbar-container
@@ -60,7 +56,7 @@ body
 {
   float: left;
   position: relative;
-  left: -28px;
+  margin-left: 2px;
 }
 
 .logo-container img
@@ -96,7 +92,7 @@ body
 {
   width: 998px;
   float: left;
-  left: 130px;
+  left: 30px;
   position: relative;
 }
 
@@ -112,72 +108,77 @@ a:-webkit-any-link
   color: #aaa;
 }
 
+.main-container a:-webkit-any-link
+{
+  text-decoration: none;
+  color: black;
+}
+
 .single_blog_holder a
 {
-  color: #6ca3a3
+color: #6ca3a3
 }
 
 .small-image
 {
-  border: 1px solid #aaa;
-  position: relative;
-  width: 240px;
-  height: 240px;
-  margin: 7px;
+border: 1px solid #aaa;
+position: relative;
+width: 240px;
+height: 240px;
+margin: 7px;
 }
 
 .blog-holder
 {
-  margin: 5px;
-  text-align: center;
-  display: table;
-  cursor: pointer;
-  float: left;
+margin: 5px;
+	text-align: center;
+display: table;
+cursor: pointer;
+float: left;
 }
 
 .small-home-image
 {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 240px;
-  height: 240px;
+position: absolute;
+left: 0px;
+top: 0px;
+width: 240px;
+height: 240px;
 }
 
 .home-blog-title
 {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 20px;
-  color: black;
+display: table-cell;
+	 vertical-align: middle;
+padding: 20px;
+color: black;
 }
 
 .main-container
 {
-  position: relative;
-  width: 1025px;
-  float: left;
-  color: black;
-  font-size: 16px;
-  top: 100px;
+position: relative;
+width: 1025px;
+float: left;
+color: black;
+font-size: 16px;
 }
 
 h2
 {
-  font-size: 16px;
-  font-weight: 300;
-  font-family: 'Roboto';
+	font-size: 16px;
+	font-weight: 300;
+	font-family: 'Roboto';
 }
 
 h3
 {
-  font-weight: 300;
-  font-family: 'Roboto';
+	font-weight: 300;
+	font-family: 'Roboto';
 }
 
 .single_blog_holder
 {
-  width: 700px;
+  width: 1000px;
   float: left;
   margin: 5px;
 }
@@ -223,6 +224,11 @@ h3
   width: 75%;
 }
 
+.editable_blog_text_fields input[type=checkbox]
+{
+  width: 15px;
+}
+
 .editable_blog_text_fields label
 {
   width: 25%;
@@ -262,25 +268,128 @@ li.comment_holder
   display: none;
 }
 
-#comment_text
-{
-  width: 400px;
-  height: 200px;
-  margin: 10px;
-}
-
-.new_comment input[type=text],
-{
-  width: 200px;
-}
-
-.new_comment input
-{
-  margin: 10px;
-}
-
 .pin-holder
 {
   position: absolute;
   margin: 10px;
+}
+
+.sidebar-links
+{
+  width: 120px;
+}
+
+.sidebar-links .my-navbar
+{
+  text-align: right;
+}
+
+.sidebar-links .my-navbar li
+{
+  font-size: 14px;
+  margin: 0px;
+}
+
+.footer
+{
+  position: relative;
+  width: 100%;
+  bottom: -125px;
+  text-align: right;
+  height: 20px;
+}
+
+.footer a
+{
+  padding-bottom: 50px;
+}
+
+.tag_list
+{
+  float: right;
+  font-size: 12px;
+}
+
+.form_label
+{
+  float: left;
+  width: 100px;
+}
+
+.form_field, .form_textarea
+{
+  width: 46%;
+  padding: 1%;
+  position: relative;
+  left: 25%;
+}
+
+.form_field input
+{
+  height: 25px;
+}
+
+.form_field input, .form_textarea textarea
+{
+  width: 100%;
+  font-size: 15px;
+  border: dotted 1px #aaa;
+}
+
+.form_textarea textarea
+{
+  height: 100px;
+}
+
+#contact_body
+{
+  width: 500px;
+  height: 100px;
+}
+
+.blog_title, .page_heading
+{
+  width: 100%;
+  text-align: center;
+  font-family: 'Allura';
+  font-size: 40px;
+  color: #a2dddd;
+}
+
+::-webkit-input-placeholder
+{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  color: #aaa;
+}
+
+.contact_submit, .comment_submit
+{
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact_email
+{
+  font-family: 'Allura';
+  text-align: center;
+  font-size: 25px;
+  color: #494949;
+}
+
+.contact_email a
+{
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: #aaa;
+}
+
+.facebook_icon
+{
+  position: absolute;
+  left: 68%;
+  top: 30px;
+  cursor: pointer;
 }

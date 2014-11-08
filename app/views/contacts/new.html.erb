@@ -1,0 +1,16 @@
+<div class="page_heading">Contact</div>
+<%= form_for @contact do |c| %>
+  <div class="form_field"><input type="text" placeholder="NAME" name="contact[name]" id="contact[name]" /></div>
+
+  <div class="form_field"><input type="text" placeholder="EMAIL" name="contact[email]" id="contact[email]" /></div>
+
+  <div class="form_field"><input type="text" placeholder="PHONE" name="contact[phone]" id="contact[phone]" /></div>
+
+  <div class="form_field"><input type="text" placeholder="HOW DID YOU HEAR ABOUT ME?" name="contact[heard]" id="contact[heard]" /></div>
+
+  <div class="form_textarea"><textarea placeholder="MESSAGE" name="contact[body]" id="contact[body]"></textarea></div><br clear="all" />
+
+  <input class="contact_submit" type="submit" value="Send Message" /><br clear="all" />
+  <div class="contact_email">...or send me an email directly.<br />
+  <a href="mailto://amy5lauren@gmail.com">amy5lauren@gmail.com</a></div>
+<% end %>

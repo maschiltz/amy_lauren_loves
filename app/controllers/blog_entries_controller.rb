@@ -10,7 +10,8 @@ class BlogEntriesController < ApplicationController
 
   def edit
     if current_user
-      @blog_entry = BlogEntry.find(params[:id])
+      @blog_entry = BlogEntry.find(params[:id])    
+      @b_tags = @blog_entry.tags
     else
       redirect_to root_path
     end
@@ -29,6 +30,13 @@ class BlogEntriesController < ApplicationController
       end
 
       if @blog_entry.update(blog_entry_params)
+        BlogEntryTag.where(blog_entry_id: @blog_entry.id).destroy_all
+        if params[:blog_entry][:tag_ids]
+          params[:blog_entry][:tag_ids].each do |tag_id|
+            new_tag = BlogEntryTag.new(blog_entry_id: @blog_entry.id, tag_id: tag_id)
+            new_tag.save
+          end
+        end
         redirect_to @blog_entry
       else
         render 'edit'
@@ -50,8 +58,15 @@ class BlogEntriesController < ApplicationController
       end
 
       @blog_entry = BlogEntry.new(blog_entry_params)
-
       @blog_entry.save
+     
+      if params[:blog_entry][:tag_ids]
+        params[:blog_entry][:tag_ids].each do |tag_id|
+          new_tag = BlogEntryTag.new(blog_entry_id: @blog_entry.id, tag_id: tag_id)
+          new_tag.save
+        end
+      end
+
       redirect_to @blog_entry
     else
       redirect_to root_path
@@ -65,7 +80,7 @@ class BlogEntriesController < ApplicationController
 
     @comments = Array.new
     @comments = comments_for_level(params[:id], 0, 0)
-    puts @comments.inspect()
+    @b_tags = @blog_entry.tags
   end
 
   def destroy
@@ -86,7 +101,7 @@ class BlogEntriesController < ApplicationController
 
   private
     def blog_entry_params
-      params.require(:blog_entry).permit(:title, :text, :posted, :image, :featured, :show_on_home)
+      params.require(:blog_entry).permit(:title, :text, :posted, :image, :featured, :show_on_home, :tags)
     end
 
     def comments_for_level(blog, level, depth)

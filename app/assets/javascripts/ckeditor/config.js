@@ -2,17 +2,21 @@ if (typeof(CKEDITOR) != 'undefined') {
 CKEDITOR.editorConfig = function(config) {
   config.language = 'en';
   config.height = "600";
-  config.width = "720";
+  config.width = "1000";
   config.fontSize_defaultLabel = '14px'
   config.allowedContent = true;
   config.disableNativeSpellChecker = false;
+  //config.extra_plugins = 'youtube';
+  //config.filebrowserBrowseUrl = '/fileman/index.html';
   config.filebrowserBrowseUrl = "/ckeditor/pictures";
   config.filebrowserFlashBrowseUrl = "/ckeditor/pictures";
   config.filebrowserFlashUploadUrl = "/ckeditor/pictures";
   config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
+  //config.filebrowserImageBrowseUrl = "/fileman/index.html?type=image";
   config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
   config.filebrowserImageUploadUrl = "/ckeditor/pictures";
   config.filebrowserUploadUrl = "/ckeditor/pictures";
+  //config.removeDialogTabs = 'link:upload;image:Upload';
   config.toolbar_Pure = [
     '/', {
       name: 'basicstyles',

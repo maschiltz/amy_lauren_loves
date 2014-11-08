@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904013449) do
+ActiveRecord::Schema.define(version: 20141030014230) do
 
   create_table "blog_entries", force: true do |t|
     t.string   "title"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20140904013449) do
     t.integer  "featured"
     t.integer  "show_on_home"
   end
+
+  create_table "blog_entry_tags", force: true do |t|
+    t.integer  "blog_entry_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_entry_tags", ["blog_entry_id"], name: "index_blog_entry_tags_on_blog_entry_id", using: :btree
+  add_index "blog_entry_tags", ["tag_id"], name: "index_blog_entry_tags_on_tag_id", using: :btree
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -56,6 +66,16 @@ ActiveRecord::Schema.define(version: 20140904013449) do
 
   add_index "comments", ["blog_entry_id"], name: "index_comments_on_blog_entry_id", using: :btree
 
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "heard"
+  end
+
   create_table "image_links", force: true do |t|
     t.string   "title"
     t.string   "link"
@@ -66,6 +86,12 @@ ActiveRecord::Schema.define(version: 20140904013449) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "posted"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

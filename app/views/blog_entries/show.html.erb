@@ -11,22 +11,16 @@
 <% end %>
 
 <div class="single_blog_holder">
-  <span style="font-size: 12px;"><%= @blog_entry.posted.strftime("%B %d, %Y") %></span>
+  <span style="font-size: 12px;"><%= @blog_entry.posted.strftime("%B %d, %Y") %></span><span class="tag_list">
+<% @b_tags.each do |tag| %>
+<%= tag.name %>
+<% end %>
+</span>
   <br />
-  <h3><%= @blog_entry.title %></h3>
+  <div class="blog_title"><%= @blog_entry.title %></div>
   <%= @blog_entry.text.html_safe %>
   <br />
   <%= render template: "comments/show", locals: {blog_entry_id: @blog_entry.id} %>
 </div>
 
-<div class="featured">
-<span class="title">RECENTLY...</span><br />
-<% @features.each do |feature| %>
-  <div class="featured_holder">
-  <%= image_tag feature.image.url(:medium), class: "featured_image", data: {id: feature.id, :'pin-no-hover' => 'true'} %>
-  <br />
-  <span class="blog_title"><%= feature.title %></span>
-  </div>
-<% end %>
-</div>
 <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script>
