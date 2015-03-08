@@ -1,5 +1,11 @@
-<div class="page_heading">Contact</div>
+<div class="page_heading">Contact Amy</div>
+<div class="contact_address">
+Wedding and Portrait Photography<br />Central Virginia and Beyond
+</div><br clear="all" />
+<div class="contact_left">
 <%= form_for @contact do |c| %>
+  <input type="hidden" name="contact[randa]" value="<%= @randa %>" />
+  <input type="hidden" name="contact[randb]" value="<%= @randb %>" />
   <div class="form_field"><input type="text" placeholder="NAME" name="contact[name]" id="contact[name]" /></div>
 
   <div class="form_field"><input type="text" placeholder="EMAIL" name="contact[email]" id="contact[email]" /></div>
@@ -8,9 +14,14 @@
 
   <div class="form_field"><input type="text" placeholder="HOW DID YOU HEAR ABOUT ME?" name="contact[heard]" id="contact[heard]" /></div>
 
-  <div class="form_textarea"><textarea placeholder="MESSAGE" name="contact[body]" id="contact[body]"></textarea></div><br clear="all" />
+  <div class="form_textarea"><textarea placeholder="MESSAGE" name="contact[body]" id="contact[body]"></textarea></div>
+
+  <div class="form_field"><input type="text" placeholder="WHAT IS <%= @randa %> PLUS <%= @randb %>" name="contact[answer]" id="contact[answer]" /></div><br clear="all" />
 
   <input class="contact_submit" type="submit" value="Send Message" /><br clear="all" />
   <div class="contact_email">...or send me an email directly.<br />
   <a href="mailto://amy5lauren@gmail.com">amy5lauren@gmail.com</a></div>
 <% end %>
+</div>
+<div class="contact_right">
+</div>

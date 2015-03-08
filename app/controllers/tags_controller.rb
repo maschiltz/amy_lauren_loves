@@ -4,6 +4,7 @@ class TagsController < ApplicationController
     @blog_entries = @tag.blog_entries
     @list = @blog_entries.sort_by { |item| item[:posted] }.reverse
     @features = BlogEntry.where("featured > 0").order('featured ASC')
+
     render "site/index"
   end
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: 
+  active: 1
+  order: 1
+
+two:
+  image: 
+  active: 1
+  order: 1

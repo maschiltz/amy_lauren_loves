@@ -5,6 +5,9 @@
   <%= f.label(:title, "Title: ") %>
   <%= f.text_field(:title) %>
   <br />
+  <%= f.label(:show_on_home, "Show On Home? (what order)") %>
+  <%= f.text_field(:show_on_home) %>
+  <br />
   <%= f.label(:link, "Link: ") %>
   <%= f.text_field(:link) %>
   <br />
@@ -12,4 +15,5 @@
   <%= f.file_field :image %>
   <br />
   <%= f.submit("Update") %>
+  <input type="button" id="delete_image_link" data-imagelinkidid="<%= @image_link.id %>" value="Delete" />
 <% end %>

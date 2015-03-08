@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield(:title).empty? ? 'Amy Lauren Loves' : yield(:title) %></title>
+  <title><%= yield(:title).empty? ? 'AmyLaurenLoves Photography' : yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
@@ -24,6 +24,15 @@
 </head>
 <body>
 
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  
   <div class="container">
     <div class="row">
       <div class="left-sidebar">
@@ -36,21 +45,23 @@
             <% if user_signed_in? %>
               <li><%= link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => 'class_here' %></li><br />
               <li><%= link_to "CREATE BLOG", new_blog_entry_path %></li><br />
-              <li><%= link_to "CREATE LINK", new_image_link_path %></li><br />
-              <li><%= link_to "EDIT LINKS", image_links_path %></li>
+              <li><%= link_to "MAKE GALLERY", new_image_link_path %></li><br />
+              <li><%= link_to "EDIT GALLERY", image_links_path %></li>
+              <li><%= link_to "EDIT SLIDESHOW", slides_path %></li>
             <% end %>
           </ul>
         </div>
       </div>
       <div class="non-left-sidebar">
        <div style="z-index: 9000000; background-color:white; width:1022px; top: 0px;">
-         <img class="facebook_icon" src="/images/facebook_icon.png" onclick="window.open('http://www.facebook.com/amy.schiltz')" />
+         <img class="facebook_icon" src="/images/facebook_icon.png" onclick="window.open('http://www.facebook.com/amylaurencreates')" />
          <div class="navbar-container">
           <ul class="my-navbar">
             <li><%= link_to "HOME", root_path %></li>
+            <li><a href="/blog_entries/7-meet-the-fam">ABOUT</a></li>
             <li><%= link_to "BLOG", blog_entries_path %></li>
-            <li><%= link_to "CONTACT", new_contact_path %></li>
             <li><a href="/blog_entries/53-wedding-photography-pricing">PRICING</a></li>
+            <li><%= link_to "CONTACT", new_contact_path %></li>
           </ul>
         </div>
           <img id="logorightside" src="/images/logorightside.png" data-pin-no-hover="true" />
@@ -60,12 +71,15 @@
        </div>
        <br clear="all" />
        <div class="footer">
+         <div class="catch_phrase">
+           Wedding and Portrait Photography<br />Central Virginia and Beyond
+         </div>
+         <div class="fb-like" data-href="https://www.facebook.com/amylaurencreates" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
+         ©2014&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "CLIENT GALLERIES", image_links_list_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
          <% if !user_signed_in? %>
-           ©2014&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "CLIENT GALLERIES", image_links_list_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "LOGIN", new_user_session_path %>
+           <%= link_to "LOGIN", new_user_session_path %>
          <% end %>
        </div>
-       <div id="grey" class="hidden"></div>
-       <div id="popup"><div id="popup-container" class="hidden"></div></div>
      </div>
    </div>
  </div>
@@ -76,6 +90,9 @@
 <% if alert %>
   <p class="alert hidden"><%= alert %></p>
 <% end %>
+
+<div id="grey" class="hidden"></div>
+<div id="popup" class="hidden"></div>
 
 </body>
 </html>

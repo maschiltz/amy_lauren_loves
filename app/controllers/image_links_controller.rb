@@ -39,7 +39,7 @@ class ImageLinksController < ApplicationController
 
 
       if @image_link.update(image_link_params)
-        redirect_to @image_link
+        redirect_to root_path
       else
         render 'edit'
       end      
@@ -83,8 +83,18 @@ class ImageLinksController < ApplicationController
     @image_link = ImageLink.find(params[:id])
   end
 
+  def destroy
+    if current_user
+      @image_link = ImageLink.find(params[:id])
+      @image_link.destroy
+      render :text => "Deleted"
+    else
+      redirect_to root_path
+    end
+  end
+
   private
     def image_link_params
-      params.require(:image_link).permit(:title, :link, :image, :posted)
+      params.require(:image_link).permit(:title, :link, :image, :posted, :show_on_home)
     end
 end

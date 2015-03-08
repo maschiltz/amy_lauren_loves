@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   devise_for :users
   get 'site/index'
 
+  get 'slides/test' => 'slides#test'
   get 'image_links/list' => 'image_links#list'
   resources :blog_entries
   resources :image_links
-  resources :comments
+#  resources :comments
   resources :tags
   resources :contacts
+  resources :slides
 
   get 'comments/:blog_entry_id', to: 'comments#show'
 

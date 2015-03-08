@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030014230) do
+ActiveRecord::Schema.define(version: 20141214190150) do
 
   create_table "blog_entries", force: true do |t|
     t.string   "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141030014230) do
     t.datetime "image_updated_at"
     t.integer  "featured"
     t.integer  "show_on_home"
+    t.integer  "fade"
   end
 
   create_table "blog_entry_tags", force: true do |t|
@@ -86,6 +87,18 @@ ActiveRecord::Schema.define(version: 20141030014230) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "posted"
+    t.integer  "show_on_home"
+  end
+
+  create_table "slides", force: true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "active"
+    t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|

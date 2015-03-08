@@ -14,7 +14,9 @@ class CommentsController < ApplicationController
     end
     @comment = Comment.new(comment_params)
     @comment.save
- 
+
+    UserMailer.new_comment(@comment).deliver
+
     @comments = Array.new
     @comments = comments_for_level(@comment.blog_entry_id, 0, 0)
    

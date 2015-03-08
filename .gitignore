@@ -24,3 +24,5 @@ config/secrets.yml
 .rvmrc
 
 /public/blog_images/*
+/public/assets/*
+/config/database.yml

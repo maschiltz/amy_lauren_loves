@@ -42,7 +42,7 @@ Rails.application.configure do
   # config.force_ssl = true
 
   # Set to :debug to see everything in the log.
-  config.log_level = :info
+  config.log_level = :error
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
@@ -79,7 +79,7 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: 'maschiltz@gmail.com',
-    password: 'StopTrying9250'
+    password: 'Korbin9250'
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
